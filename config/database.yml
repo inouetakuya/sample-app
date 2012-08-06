@@ -19,7 +19,9 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
-  pool: 5
-  timeout: 5000
+  adapter: mysql2
+  encoding: utf8
+  username: sqale_b9bd20e1bf
+  password: f19585f9d7625d1a3cdbdeddc86b01f3ec7e32610d08f8e0
+  database: sqale_b9bd20e1bf
+  host: mysql001.sqale.jp
