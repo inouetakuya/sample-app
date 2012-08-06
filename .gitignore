@@ -7,6 +7,15 @@
 # Ignore bundler config
 /.bundle
 
+# Ignore gems installed by bundler
+/vendor/bundle
+
+# Ignore assets files
+/public/assets
+
+# Ignore cache files
+/.sass-cache
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 
