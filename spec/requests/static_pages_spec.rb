@@ -1,11 +1,14 @@
-require 'spec_helper'
+# -*- encoding: utf-8 -*-
 
-subject { page }
+require 'spec_helper'
+include ApplicationHelper
 
 describe "StaticPages" do
+
+  subject { page }
+
   describe "Home page" do
     before { visit root_path }
-
 
     #it "should have the h1 'Sample App'" do
     #  # visit '/static_pages/home'
@@ -20,16 +23,16 @@ describe "StaticPages" do
     #  page.should have_selector('title',
     #    :text => "Ruby on Rails Tutorial Sample App")
     #end
-    it { should have_selector('title',
-      :text => "Ruby on Rails Tutorial Sample App") }
+    # it { should have_selector('title', text: "Ruby on Rails Tutorial Sample App") }
+    it { should have_selector('title', text: full_title('')) }
 
-
-    it "should not have a custom page title" do
-      # visit '/static_pages/home'
-      # visit root_path
-      page.should_not have_selector('title',
-        :text => "| Home")
-    end
+    #it "should not have a custom page title" do
+    #  # visit '/static_pages/home'
+    #  # visit root_path
+    #  page.should_not have_selector('title',
+    #    :text => "| Home")
+    #end
+    it { should_not have_selector('title', text: '| Home')}
   end
 
   describe "Help page" do
@@ -44,6 +47,8 @@ describe "StaticPages" do
       visit help_path
       page.should have_selector('title',
         :text => "Ruby on Rails Tutorial Sample App | Help")
+      page.should have_selector('title',
+        :text => full_title('Help'))
     end
   end
 
