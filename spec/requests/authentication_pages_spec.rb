@@ -15,15 +15,16 @@ describe "Authentication" do
 
     describe 'with invalid information' do
       before { click_button 'Sign in' }
-    end
 
-    it { should have_selector('title', text: 'Sign in') }
-    it { should have_selector('div.alert.alert-error', text: 'invalid') }
+      it { should have_selector('title', text: 'Sign in') }
+      it { should have_selector('div.alert.alert-error', text: 'invalid') }
 
-    describe 'after visiting another page' do
-      before { click_link 'Home' }
+      describe 'after visiting another page' do
+        before { click_link 'Home' }
+        before { click_link 'Home' }  # 1回 render しただけでは、メッセージが残ってしまうというバグ
 
-      it { should_not have_selector('div.alert.alert-error') }
+        it { should_not have_selector('div.alert.alert-error') }
+      end
     end
 
     describe 'with valid information' do
