@@ -3,6 +3,25 @@ require 'spec_helper'
 describe "UserPages" do
 
   subject { page }
+
+  describe 'index' do
+    before do
+      sign_in FactoryGirl.create(:user)
+      FactoryGirl.create(:user, name: 'Bob', email: 'bob@example.com')
+      FactoryGirl.create(:user, name: 'Ben', email: 'ben@example.com')
+      visit users_path
+    end
+
+    it { should have_selector('title', text: 'All users') }
+    it { should have_selector('h1', text: 'All users') }
+
+    it 'should list each user' do
+      User.all.each do |user|
+        page.should have_selector('li', text: user.name)
+      end
+    end
+  end
+
   #describe "GET /user_pages" do
   #  it "works! (now write some real specs)" do
   #    # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
@@ -10,6 +29,7 @@ describe "UserPages" do
   #    response.status.should be(200)
   #  end
   #end
+
   describe "signup page" do
     before { visit signup_path }
 
