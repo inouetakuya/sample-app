@@ -5,6 +5,12 @@ describe Micropost do
   before do
     # this code is wrong
     # @micropost = Micropost.new(content: 'Lorem ipsum', user_id: user.id)
+
+    # micropost.user >> Return the User object associated with the micropost.
+    # user.microposts >> Return an array of the user’s microposts.
+    # user.microposts.create(arg) >> Create a micropost (user_id = user.id).
+    # user.microposts.create!(arg) >> Create a micropost (exception on failure).
+    # user.microposts.build(arg) >> Return a new Micropost object (user_id = user.id).
     @micropost = user.microposts.build(content: 'Lorem ipsum')
   end
 
