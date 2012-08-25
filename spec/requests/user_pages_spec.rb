@@ -163,7 +163,7 @@ describe "UserPages" do
         describe "toggling the button" do
           before { click_button "Unfollow" }
 
-          it { should have_selector('input', value: 'follow') }
+          it { should have_selector('input', value: 'Follow') }
         end
       end
     end
